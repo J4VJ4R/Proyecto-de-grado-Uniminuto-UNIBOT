@@ -23,6 +23,66 @@ A continuación, se detallan los movimientos para un brazo de tres grados de lib
 
 ![Brazo Robótico](./images_readme/brazo.png)
 
+## Diagrama de componentes de la App
+
+![Diagrama de Componentes](./images_readme/mobile-app-components.png)
+
+## Diagramas de clases de la App
+
+A continuación, aparecen los diagramas de clase de algunos componentes:
+
+### Modelo de instrucciones
+
+```mermaid
+classDiagram
+class IInstruction {
+    <<Interface>>
+    +getPartId() byte
+}
+class Axis {
+    <<Enumeration>>
+    X
+    Y
+    Z
+}
+class Direction {
+    <<Enumeration>>
+    Clockwise
+    CounterClockwise
+}
+class Rotation {
+    +getAxis() Axis
+    +getAngle() float
+    +getDirection() Direction
+}
+
+class InstructionsService {
+    +sendInstruction(IInstruction instruction) Promise
+}
+
+class IInstructionsTransmitter {
+    <<Interface>>
+    +sendInstruction(IInstruction instruction) Runnable
+}
+
+class Promise {
+    +then(Lambda) Promise
+    +catch(Lambda) Promise
+}
+
+class Claw {
+    +getOpenClosed() boolean
+}
+
+IInstruction <|--Rotation
+IInstruction <|--Claw
+Rotation..>Axis
+Rotation..>Direction
+InstructionsService..>IInstruction
+InstructionsService..>Promise
+InstructionsService..>IInstructionsTransmitter
+```
+
 ## Tecnologías Utilizadas 🚀
 
 - Android 📱
@@ -33,3 +93,4 @@ A continuación, se detallan los movimientos para un brazo de tres grados de lib
 ## Autor
 
 - **Javier Jaramillo**
+- **Jeysson Guevara**
