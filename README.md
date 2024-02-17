@@ -60,9 +60,15 @@ class InstructionsService {
     +sendInstruction(IInstruction instruction) Promise
 }
 
+class SendInstructionRequest {
+    +getInstruction() IInstruction
+    +accept()
+    +reject()
+}
+
 class IInstructionsTransmitter {
     <<Interface>>
-    +sendInstruction(IInstruction instruction) Runnable
+    +sendInstruction(SendInstructionRequest instruction) Runnable
 }
 
 class Promise {
@@ -81,6 +87,7 @@ Rotation..>Direction
 InstructionsService..>IInstruction
 InstructionsService..>Promise
 InstructionsService..>IInstructionsTransmitter
+IInstructionsTransmitter..>SendInstructionRequest
 ```
 
 ## Tecnologías Utilizadas 🚀
