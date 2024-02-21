@@ -1,34 +1,31 @@
-package com.example.unibot;
-
-// ConexionBluetooth.java
-
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
-import android.os.AsyncTask;
-import java.io.IOException;
-import java.util.UUID;
-
-public class ConexionBluetooth extends AsyncTask<Void, Void, Void> {
-    private BluetoothAdapter bluetoothAdapter;
-    private BluetoothSocket bluetoothSocket;
-    private BluetoothDevice bluetoothDevice;
+public class ConexionBluetooth extends Service {
+    // ...
 
     @Override
-    protected Void doInBackground(Void... params) {
-        try {
-            bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-            bluetoothDevice = bluetoothAdapter.getRemoteDevice("90:0f:0c:b5:ff:bf"); // Reemplaza con la dirección MAC de tu portátil
-            UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // UUID estándar para el perfil SPP (Serial Port Profile)
-            bluetoothSocket = bluetoothDevice.createRfcommSocketToServiceRecord(uuid);
-            bluetoothSocket.connect();
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        // ...
 
-            // Ahora puedes enviar datos a través de bluetooth usando el flujo de salida de bluetoothSocket.getOutputStream()
+        // Iniciar la búsqueda de dispositivos Bluetooth
+        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+        registerReceiver(receiver, filter);
+        mBluetoothAdapter.startDiscovery();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return START_NOT_STICKY;
     }
-}
 
+    // ...
+
+    private final BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+
+            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                // Se encontró un dispositivo Bluetooth
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+
+                // ...
+            }
+        }
+    };
+}
