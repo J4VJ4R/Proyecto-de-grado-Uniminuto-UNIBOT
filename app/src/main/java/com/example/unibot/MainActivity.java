@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void iniciarConexionBluetooth() {
-        // Ejecutar la conexión Bluetooth cuando sea necesario
-        new ConexionBluetooth().execute();
     }
 
     // Manejar la respuesta de la solicitud de permisos
