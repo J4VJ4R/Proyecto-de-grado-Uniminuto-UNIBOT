@@ -30,7 +30,7 @@ public class BluetoothTransmitter implements IInstructionTransmitter {
 
                 request.accept();
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 request.reject(e);
             }
         };

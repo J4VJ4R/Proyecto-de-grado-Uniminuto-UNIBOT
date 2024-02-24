@@ -19,23 +19,20 @@ import java.util.UUID;
 public final class BluetoothConnection {
     private final UUID uuid;
     private final BluetoothAdapter bluetoothAdapter;
-    private final BluetoothDevice bluetoothDevice;
+    private final String remoteDeviceMac;
 
-    private final Context context;
+    public BluetoothConnection(String remoteDeviceMac) {
+        this.remoteDeviceMac = remoteDeviceMac;
 
-    public BluetoothConnection(Context context, String remoteDeviceMac) {
-        this.context = context;
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        bluetoothDevice = bluetoothAdapter.getRemoteDevice(remoteDeviceMac); // Reemplaza con la dirección MAC de tu portátil
         uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // UUID estándar para el perfil SPP (Serial Port Profile)
     }
 
-    public BluetoothSocket open() throws IOException {
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-            throw new IOException("Cannot open connection due to permission not granted.");
-        }
+    public BluetoothSocket open() throws IOException, SecurityException {
+        BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(remoteDeviceMac); // Reemplaza con la dirección MAC de tu portátil
         BluetoothSocket bluetoothSocket = bluetoothDevice.createRfcommSocketToServiceRecord(uuid);
         bluetoothSocket.connect();
+
         return bluetoothSocket;
 
     }

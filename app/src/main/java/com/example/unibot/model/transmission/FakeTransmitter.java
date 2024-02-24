@@ -16,7 +16,8 @@ public class FakeTransmitter implements IInstructionTransmitter {
         return () -> {
             try {
                 byte[] data = serializer.serialize(request.getInstruction());
-
+                // Simular una duración arbitraria.
+                Thread.sleep(800);
                 // Enviar los datos a algún lado...
 
                 request.accept();

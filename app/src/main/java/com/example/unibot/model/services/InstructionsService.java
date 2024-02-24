@@ -18,12 +18,16 @@ public class InstructionsService {
 
     public Promise sendInstruction(IInstruction instruction) {
         return new Promise<>((accept, reject) -> {
-            ExecutorService executor = Executors.newSingleThreadExecutor();
-            Handler handler = new Handler(Looper.getMainLooper());
+            try {
+                ExecutorService executor = Executors.newSingleThreadExecutor();
+                Handler handler = new Handler(Looper.getMainLooper());
 
-            SendInstructionRequest request = new SendInstructionRequest(instruction, handler, accept, reject);
+                SendInstructionRequest request = new SendInstructionRequest(instruction, handler, accept, reject);
 
-            executor.execute(transmitter.transmitInstruction(request));
+                executor.execute(transmitter.transmitInstruction(request));
+            } catch (Exception e) {
+                reject.run(e);
+            }
         });
     }
 }

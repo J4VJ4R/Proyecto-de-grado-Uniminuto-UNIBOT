@@ -8,6 +8,10 @@ public final class Promise<T> {
         void run(T data);
     }
 
+    public interface ErrorAction {
+        void run(Exception e);
+    }
+
     public interface PromiseAction<T> {
         void run(Action<T> resolve, Action<Exception> reject);
     }
@@ -27,7 +31,7 @@ public final class Promise<T> {
 
     private List<Action<T>> thenActions = new ArrayList<>();
 
-    private List<Action<Exception>> catchActions = new ArrayList<>();
+    private List<ErrorAction> catchActions = new ArrayList<>();
 
     private void runThenActions() {
         try{
@@ -89,7 +93,7 @@ public final class Promise<T> {
         return this;
     }
 
-    public Promise<T> caught(Action<Exception> catchAction) {
+    public Promise<T> caught(ErrorAction catchAction) {
         this.catchActions.add(catchAction);
         if (state == State.Rejected) {
             runCatchActions();

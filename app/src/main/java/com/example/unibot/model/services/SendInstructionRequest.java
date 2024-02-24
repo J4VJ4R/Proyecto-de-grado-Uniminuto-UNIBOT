@@ -23,11 +23,11 @@ public final class SendInstructionRequest {
         return instruction;
     }
 
-    public void accept(){
+    public void accept() {
         handler.post(() -> accept.run(null));
     }
 
-    public void reject(Exception reason){
-        reject.run(reason);
+    public void reject(Exception reason) {
+        handler.post(() -> reject.run(reason));
     }
 }
