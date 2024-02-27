@@ -4,45 +4,116 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/custom_background"
+    >
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/IdBtnDesconectar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginBottom="96dp"
-        android:text="Enviar"
+        android:text="DESCONECTAR"
+        android:backgroundTint="#E017999A"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextText3"
+    <Button
+        android:id="@+id/IdBtnEnviar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="UNIBOT"
-        android:textAlignment="center"
-        android:textStyle="bold"
+        android:layout_height="0dp"
+        android:layout_marginBottom="72dp"
+        android:layout_weight="1"
+        android:text="ENVIAR DATOS AL ROBOT"
+        android:backgroundTint="#A5FFDE59"
+        app:layout_constraintBottom_toTopOf="@+id/IdBtnDesconectar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/IdBtnBuscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BUSCAR"
+        tools:layout_editor_absoluteY="8dp"
+        android:backgroundTint="#64FFDE59"
+        />
+
+    <Button
+        android:id="@+id/IdBtnConectar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="CONECTAR"
+        android:backgroundTint="#8417999A"
+
+        app:layout_constraintTop_toBottomOf="@+id/IdDisEncontrados"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Informacion del movimento del robot"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/IdBtnConectar"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Spinner
+        android:id="@+id/IdDisEncontrados"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/IdBtnBuscar"
+        tools:layout_editor_absoluteX="0dp" />
 
     <EditText
-        android:id="@+id/editTextText4"
-        android:layout_width="328dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="24dp"
+        android:id="@+id/IdMovimientoParte"
+        android:layout_width="264dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
+        android:hint="INGRESE LA PARTE A MOVER"
+        android:background="@drawable/custom_input"
         android:inputType="text"
-        android:text="SISTEMA DE DATOS PARA MOVER BRAZO ROBÓTICO"
         android:textAlignment="center"
-        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/IdSentido"
+        android:layout_width="264dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="SENTIDO DEL ROBOT"
+        android:background="@drawable/custom_input"
+        android:inputType="text"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/IdBtnEnviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IdGrado" />
+
+    <EditText
+        android:id="@+id/IdGrado"
+        android:layout_width="234dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:hint="GRADOS A MOVER"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IdMovimientoParte" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
