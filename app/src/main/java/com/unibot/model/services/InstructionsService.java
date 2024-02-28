@@ -1,10 +1,10 @@
-package com.example.unibot.model.services;
+package com.unibot.model.services;
 
 import android.os.Handler;
 import android.os.Looper;
 
-import com.example.unibot.model.IInstruction;
-import com.example.unibot.model.transmission.IInstructionTransmitter;
+import com.unibot.model.IInstruction;
+import com.unibot.model.transmission.IInstructionTransmitter;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

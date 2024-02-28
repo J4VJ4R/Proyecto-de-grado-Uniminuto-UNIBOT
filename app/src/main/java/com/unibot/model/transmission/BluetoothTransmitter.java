@@ -1,11 +1,10 @@
-package com.example.unibot.model.transmission;
+package com.unibot.model.transmission;
 
 import android.bluetooth.BluetoothSocket;
 
-import com.example.unibot.model.serialization.IInstructionSerializer;
-import com.example.unibot.model.services.SendInstructionRequest;
+import com.unibot.model.serialization.IInstructionSerializer;
+import com.unibot.model.services.SendInstructionRequest;
 
-import java.io.IOException;
 import java.io.OutputStream;
 
 public class BluetoothTransmitter implements IInstructionTransmitter {

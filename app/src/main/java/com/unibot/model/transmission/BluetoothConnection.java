@@ -1,19 +1,10 @@
-package com.example.unibot.model.transmission;
+package com.unibot.model.transmission;
 
-import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.Context;
-import android.content.pm.PackageManager;
-
-import androidx.core.app.ActivityCompat;
-
-import com.example.unibot.model.serialization.IInstructionSerializer;
-import com.example.unibot.model.services.SendInstructionRequest;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.UUID;
 
 public final class BluetoothConnection {

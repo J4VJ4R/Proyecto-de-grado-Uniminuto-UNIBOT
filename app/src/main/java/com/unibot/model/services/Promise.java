@@ -1,4 +1,4 @@
-package com.example.unibot.model.services;
+package com.unibot.model.services;
 
 import java.util.ArrayList;
 import java.util.List;
