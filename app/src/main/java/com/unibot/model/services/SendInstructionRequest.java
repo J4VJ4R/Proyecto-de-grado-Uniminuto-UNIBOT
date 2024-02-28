@@ -1,8 +1,8 @@
-package com.example.unibot.model.services;
+package com.unibot.model.services;
 
 import android.os.Handler;
 
-import com.example.unibot.model.IInstruction;
+import com.unibot.model.IInstruction;
 
 public final class SendInstructionRequest {
     private IInstruction instruction;

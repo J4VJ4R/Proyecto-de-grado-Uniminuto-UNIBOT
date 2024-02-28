@@ -1,6 +1,6 @@
-package com.example.unibot.model.transmission;
+package com.unibot.model.transmission;
 
-import com.example.unibot.model.services.SendInstructionRequest;
+import com.unibot.model.services.SendInstructionRequest;
 
 public interface IInstructionTransmitter {
     Runnable transmitInstruction(SendInstructionRequest request);

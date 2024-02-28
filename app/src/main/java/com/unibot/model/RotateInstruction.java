@@ -1,4 +1,4 @@
-package com.example.unibot.model;
+package com.unibot.model;
 
 public class RotateInstruction implements IInstruction {
     private byte partId;

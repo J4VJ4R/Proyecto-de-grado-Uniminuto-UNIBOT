@@ -1,4 +1,4 @@
-package com.example.unibot.model;
+package com.unibot.model;
 
 public enum Direction {
     CLOCKWISE(0),

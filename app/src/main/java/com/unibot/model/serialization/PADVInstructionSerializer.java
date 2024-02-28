@@ -1,10 +1,10 @@
-package com.example.unibot.model.serialization;
+package com.unibot.model.serialization;
 
-import com.example.unibot.model.Axis;
-import com.example.unibot.model.ClawInstruction;
-import com.example.unibot.model.Direction;
-import com.example.unibot.model.IInstruction;
-import com.example.unibot.model.RotateInstruction;
+import com.unibot.model.Axis;
+import com.unibot.model.ClawInstruction;
+import com.unibot.model.Direction;
+import com.unibot.model.IInstruction;
+import com.unibot.model.RotateInstruction;
 
 public class PADVInstructionSerializer implements IInstructionSerializer {
     @Override
