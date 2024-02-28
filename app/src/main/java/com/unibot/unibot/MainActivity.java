@@ -5,6 +5,7 @@ import android.os.Bundle;
 //01-------------------------------------------------------
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResult;
@@ -104,7 +105,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(getBaseContext(), "PRENDIO LED 1", Toast.LENGTH_SHORT).show();
                 // CODIGO A EJECUTAR CUANDOS E PRESIONE EL BOTON
-                MyConexionBT.write('a');
+                EditText IdMovimientoParte = findViewById(R.id.IdMovimientoParte);
+                String movimiento = IdMovimientoParte.getText().toString();
+                EditText IdGrado = findViewById(R.id.IdGrado);
+                String grado = IdGrado.getText().toString();
+                EditText IdSentido = findViewById(R.id.IdSentido);
+                String sentido = IdSentido.getText().toString();
+
+                MyConexionBT.write( "parte del robot selecionada: ");
+                MyConexionBT.write( movimiento);
+                MyConexionBT.write("\n");
+                MyConexionBT.write( "grado de movimiento seleccionado: ");
+                MyConexionBT.write(grado);
+                MyConexionBT.write("\n");
+                MyConexionBT.write( "Sentido de movimiento seleccionado: ");
+                MyConexionBT.write(sentido);
+                MyConexionBT.write("\n");
             }
         });
 
@@ -236,10 +252,10 @@ public class MainActivity extends AppCompatActivity {
 
             mmOutStream = tmpOut;
         }
-        public void write(char input) {
+        public void write(String input) {
             //byte msgBuffer = (byte)input;
             try {
-                mmOutStream.write((byte)input);
+                mmOutStream.write(((String)input).getBytes());
             } catch (IOException e) {
                 Toast.makeText(getBaseContext(), "La Conexión fallo", Toast.LENGTH_LONG).show();
                 finish();
